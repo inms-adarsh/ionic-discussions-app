@@ -1,0 +1,31 @@
+<ion-card>
+  <ion-card-header>
+    <ion-item class="post-header">
+      <ion-label>
+        <h3>{{post.from.name}} <ion-note>{{post.from.username}}</ion-note>
+        </h3>
+        <p>{{post.time}}</p>
+      </ion-label>
+      <ion-button slot="end" fill="outline">Follow</ion-button>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-row>{{post.content}}</ion-row>
+    <ion-row>
+      <ion-button icon-start (click)="likePost()">
+        <ion-icon name="thumbs-up"></ion-icon>
+        {{post.noOfLikes}}
+      </ion-button>
+      <ion-button (click)="togglePostComments()" icon-start>
+        <ion-icon name="chatbubbles"></ion-icon>Comments
+      </ion-button>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+<ion-row justify-content-center>
+  <ion-col size="10">
+    <app-post-list-item-comments *ngIf="showComments" [postId]="post.id"></app-post-list-item-comments>
+  </ion-col>
+</ion-row>
+<!-- <ng-content select="app-post-list-item-comments" ></ng-content> -->

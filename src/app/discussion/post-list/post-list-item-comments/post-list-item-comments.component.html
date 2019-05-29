@@ -1,0 +1,20 @@
+<ion-card class="commentsForm">
+  <ion-card-content>
+    <form [formGroup]="commentsForm" (ngSubmit)="submitComment()">
+      <ion-row>
+        <ion-textarea placeholder="Write Something..." formControlName="comment"></ion-textarea>
+      </ion-row>
+      <ion-row>
+        <ion-button type="submit" [disabled]="!commentsForm.valid" icon-start>
+          <ion-icon name="send"></ion-icon>Post
+        </ion-button>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-card>
+<ion-card *ngFor="let postComment of postComments">
+  <ion-card-content>
+    {{postComment.comment}}
+  </ion-card-content>
+
+</ion-card>

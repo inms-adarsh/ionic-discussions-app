@@ -1,0 +1,27 @@
+<ion-content>
+    <ion-row justify-content-center>
+        <ion-col>
+            <ion-row justify-content-center>
+                <ion-col size="10">
+                    <ion-searchbar [formControl]="searchInput" text-center></ion-searchbar>
+                </ion-col>
+            </ion-row>
+            <ion-card>
+                <ion-item>
+                    <h4 slot="start">What's happening?</h4>
+                </ion-item>
+                <ion-card-content>
+                    <form [formGroup]="postForm" (ngSubmit)="submitPost()">
+                        <ion-row>
+                            <ion-textarea class="post-input" placeholder="Write Something..." formControlName="content"></ion-textarea>
+                        </ion-row>
+                        <ion-row>
+                            <ion-button type="submit" [disabled]="!postForm.valid">Post</ion-button>
+                        </ion-row>
+                    </form>
+                </ion-card-content>
+            </ion-card>
+            <app-post-list [posts]="posts$ | async"></app-post-list>
+        </ion-col>
+    </ion-row>
+</ion-content>

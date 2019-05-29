@@ -1,0 +1,17 @@
+<div *ngIf="question.multiple === 'false'">
+  <div *ngFor="let choice of question.choices; let i = index">
+    <input [id]="i" class="toggle toggle-left" [name]="question.identifier" [value]="choice.value"
+      type="radio">
+    <label [for]="i" class="answer_block"><span>A</span> {{choice.label}}</label>
+  </div>
+</div>
+
+<div *ngIf="question.multiple === 'true'">
+  <input id="describe_input" className="typeform_input" type="text" />
+  <app-selected-options></app-selected-options>
+  <ul>
+    <li *ngFor="let choice of question.choices">
+      {{ choice.value }}
+    </li>
+  </ul>
+</div>
